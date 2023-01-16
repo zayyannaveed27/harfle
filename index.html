@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حرفل</title>
+
+    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Noto Nastaliq Urdu'>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+    <script src="https://kit.fontawesome.com/31819ddc01.js" crossorigin="anonymous"></script>
+    <script src="js/main.js" type ="module"></script>
+  </head>
+  <body>
+
+
+    <!--------------alert for error warnings----------------------------------------------------> 
+
+     <div class="alert show hide" id = 'alert-box'>
+        <span class="msg" id = 'alert-msg'>لفظ فہرست میں نہیں ہے۔</span>
+        <span class="close-btn" id = 'alert-btn'>
+            <span class = "fas fa-times"></span>
+        </span> 
+        <span class="fas fa-exclamation-circle"></span>
+     </div>
+
+     <!--------------modal for settings----------------------------------------------------> 
+
+
+    
+    <div class="modal" id="modal">
+        <div class="modal-header">
+            <div></div>
+            <div class="modal-title">ترتیبات</div>
+            <button data-close-button class="close-button">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="toggle" id="dark-mode">
+                    <i class="indicator"></i>
+                </div>
+                <div class="label">ڈارک موڈ</div>
+            </div>
+            <div class="row">
+                <div class="toggle" id="difficulty-mode">
+                    <i class="indicator"></i>
+                </div>
+                <div class="label">مشکل</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!--------------modal for final message----------------------------------------------------> 
+
+    <div class="modal" id="end-modal">
+        <div class="modal-header">
+            <div></div>
+            <div class="modal-title">اختتام</div>
+            <button data-close-button class="close-button">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div></div>
+                <div></div>
+                <h3 class = "end-msg" id="end-msg"></h3>
+            </div>
+            
+            <div class="row">
+                <button id = "confirm" class="btn">ہاں</button>
+                <button id = "reject" class="btn reject">نہیں</button>
+                <div class = "end-msg" id="end-msg">: دوبارہ کھیلیں</div>
+            </div>
+        </div>
+
+    </div>
+    <div id="overlay"></div>
+
+
+    <div id="container">
+
+    <!--------------grid for game----------------------------------------------------> 
+        <div id="game">
+            <header>
+                <div class="flexbox-container">
+                    <div class="flexbox-item item-1">
+                        <button data-modal-target="#modal" type="button" id = "settings-button" class = "button-icon">
+                            <span class="material-icons md-25">settings</span>
+                        </button>
+                    </div>
+                    <div class="flexbox-item item-2">
+                        <h1 class="title" id="header-title">حرفل</h1>
+                    </div>
+                    <div class="flexbox-item item-3">
+                        <button type="button" id = "reload-button" class = "button-icon">
+                            <span class="material-icons md-25">replay</span>
+                        </button>
+                    </div>
+                </div>
+            </header> 
+
+            <div id="board-container">
+                <div id="board"></div>                
+            </div>
+        
+            <!--------------keyboard for game------------------------------------------------>
+        <div id="keyboard-container">
+            <div class="keyboard-row">
+                <button id="آ" class="letter" data-key="آ">آ</button>
+                <button id="ا" class="letter" data-key="ا">ا</button>
+                <button id="ب" class="letter" data-key="ب">ب</button>
+                <button id="پ" class="letter" data-key="پ">پ</button>
+                <button id="ت" class="letter" data-key="ت">ت</button>
+                <button id="ٹ" class="letter" data-key="ٹ">ٹ</button>
+                <button id="ث" class="letter" data-key="ث">ث</button>
+                <button id="ج" class="letter" data-key="ج">ج</button>
+                <button id="چ" class="letter" data-key="چ">چ</button>
+                <button id="خ" class="letter" data-key="خ">خ</button>
+            </div>
+            <div class="keyboard-row">
+                <div class="spacer-half"></div>
+                <button id="د" class="letter" data-key="د">د</button>
+                <button id="ڈ" class="letter" data-key="ڈ">ڈ</button>
+                <button id="ذ" class="letter" data-key="ذ">ذ</button>
+                <button id="ر" class="letter" data-key="ر">ر</button>
+                <button id="ڑ" class="letter" data-key="ڑ">ڑ</button>
+                <button id="ز" class="letter" data-key="ز">ز</button>
+                <button id="س" class="letter" data-key="س">س</button>
+                <button id="ش" class="letter" data-key="ش">ش</button>
+                <button id="ص" class="letter" data-key="ص">ص</button>
+                <button id="ض" class="letter" data-key="ض">ض</button>
+                <div class="spacer-half"></div>
+            </div>
+            <div class="keyboard-row">
+                <div class="spacer-half"></div>
+                
+                <button id="ط" class="letter" data-key="ط">ط</button>
+                <button id="ظ" class="letter" data-key="ظ">ظ</button>
+                <button id="ع" class="letter" data-key="ع">ع</button>
+                <button id="غ" class="letter" data-key="غ">غ</button>
+                <button id="ف" class="letter" data-key="ف">ف</button>
+                <button id="ک" class="letter" data-key="ک">ک</button>
+                <button id="گ" class="letter" data-key="گ">گ</button>
+                <button id="ل" class="letter" data-key="ل">ل</button>
+                <button id="م" class="letter" data-key="م">م</button>
+                <button id="ن" class="letter" data-key="ن">ن</button>
+                <div class="spacer-half"></div>
+            </div>
+            <div class="keyboard-row">
+                <button id="enter" data-key="enter" class="wide-button" style="background-color: rgb(24, 140, 198);">انٹر </button>
+                <button id="ں" class="letter" data-key="ں">ں</button>
+                <button id="و" class="letter" data-key="و">و</button>
+                <button id="ہ" class="letter" data-key="ہ">ہ</button>
+                <button id="ھ" class="letter" data-key="ھ">ھ</button>
+                <button id="ے" class="letter" data-key="ئ">ئ</button>
+                <button id="ء" class="letter" data-key="ء">ء</button>
+                <button id="ی" class="letter" data-key="ی">ی</button>
+                <button id="ے" class="letter" data-key="ے">ے</button>
+                <button id="del"data-key="delete" class="wide-button" style="background-color: rgb(231, 75, 55);">ڈلیٹ</button>
+            </div>
+        </div>
+        </div>
+
+    
+    </div>
+  </body>
+</html>

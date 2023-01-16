@@ -1,0 +1,403 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    font-family:   "Noto Nastaliq Urdu",-apple-system, BlinkMacSystemFont, Segoe UI,  Helvetica Neue, Arial, Noto Sans, sans-serif;
+ }
+
+.modal  {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    border-radius: 10px;
+    z-index: 10;
+    background-color: rgb(0, 0, 0);
+    width: 400px;
+    max-width: 80%;
+    color: gainsboro;
+}
+
+.modal.active {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.modal.light{
+    background-color: white;
+    color: black;
+}
+.modal-header {
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+
+.modal-header .modal-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.modal-header .close-button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: gainsboro;
+}
+
+.modal-body {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+
+.modal-body .row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.modal-body .label {
+    margin: auto;
+    font-size: 1.25rem;
+    width: 70px;
+}
+
+.modal-body .end-msg {
+    padding-right: 0px;
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+.btn {
+    background: #999999;
+    color: white;
+    font-size: 30px;
+    border: 1px solid #808080;
+    border-radius: 10px;
+    width: 120px;
+    vertical-align: middle;
+    padding-bottom: 15px;
+    height: 65px;
+    cursor: pointer;
+
+}
+
+.modal-body .row .reject {
+    background: #ff3333;
+    border: 1px;
+    
+}
+
+#overlay {
+    position: fixed;
+    opacity: 0;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;  
+    background-color: rgba(87, 86, 86, 0.8);
+    pointer-events: none;
+}
+  
+#overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+#overlay.pause {
+    pointer-events: all;
+}
+
+.toggle {
+    margin: auto;
+    position: relative;
+    display: block;
+    width: 80px;
+    height: 40px;
+    border-radius: 40px;
+    /* background: #222; */
+    background: rgb(4, 29, 10);
+    transition: 0.5s;
+    cursor: pointer;
+    box-shadow: inset 0 8px 60px rgba(0,0,0,0.1),
+                inset 0 8px 8px rgba(0,0,0,0.1),
+                inset 0 -4px 4px rgba(0,0,0,0.1);
+
+}
+
+.toggle.active {
+    background: rgb(182, 237, 196);
+    box-shadow: inset 0 2px 60px rgba(0, 0, 0, 0.1),
+                inset 0 2px 8px rgba(0, 0, 0, 0.1),
+                inset 0 -4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.toggle .indicator {
+    position: absolute;
+    top: 0;
+    left: 0;  
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgb(10, 70, 25), rgb(7, 50, 18));
+    border-radius: 50%;
+    transform: scale(0.9);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5),
+                inset 0 4px 4px rgba(255, 255, 255, 0.2),
+                inset 0 -4px 4px rgba(255, 255, 255, 0.2);
+    transition: 0.5s;
+}
+
+.toggle.active .indicator {
+    left: 40px;
+    background: linear-gradient(to bottom, #91cf96, #bef6be);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1),
+                inset 0 4px 4px rgb(221, 251, 220),
+                inset 0 -4px 4px rgb(238, 254, 239);
+}
+
+
+
+#container {
+    display: flex;
+    background-color: black;
+    height: 100%;
+    align-items: center;
+    flex-direction: column;
+    overflow: scroll;
+}
+
+#container.active {
+    background: white;
+}
+
+#game {
+    width: 100%;
+    max-width: 500px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.flexbox-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.flexbox-item {
+    min-height: 50px;
+    max-height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+    
+header {
+    font-family: inherit;
+    border-bottom: 1px solid rgb(58,58,60);
+}
+
+header #header-title {
+    color: gainsboro;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0 0 0 0;
+    text-align: center;
+    font-family: inherit;
+}
+
+header #header-title.active {
+    color: black;
+}
+
+.button-icon{
+
+    display: flex;
+    color: aliceblue;
+    background: black;
+    border: none;
+    border-radius: 50%;
+
+}
+
+.button-icon.active {
+    background-color: white;
+    color: rgb(12, 19, 53);
+}
+
+.button-icon:hover {
+    cursor: pointer;
+}
+
+.material-icons.md-25 { font-size: 28px; }
+
+
+#board-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    overflow-y: visible;
+    margin-top: 2%; 
+}
+
+#board {
+    display: grid;
+    grid-gap: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    color: black;
+}
+
+.square {
+    border: 2px solid rgb(58, 58, 60);
+    width: 45px;
+    height: 45px;
+    font-size: 22px;
+    color: gainsboro;
+    text-transform: uppercase;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5px;
+}
+
+.square.light {
+    color: black;
+}
+
+#keyboard-container {
+    margin: auto;
+    width: 100%;
+    max-width: 450px;
+    align-items: center;
+}
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto 8px;
+    touch-action: manipulation;
+}
+
+.keyboard-row button {
+    font-family: inherit;
+    border: 0;
+    height: 40px;
+    cursor: pointer;
+    background-color: rgb(129,131,132);
+    color: rgb(215,218,220);
+    flex-grow: 1;
+    text-transform: uppercase;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+    border-radius: 4px;
+    user-select: none;
+    min-width: 30px;
+    font-size: 16px;
+    text-align: center;
+
+}
+
+.keyboard-row button.wide-button {
+    flex-grow: 1.5;
+    background-color: olivedrab;
+}
+
+.spacer-half {
+    flex-grow: 0.5;
+}
+
+
+body {
+    overflow: hidden;
+}
+
+.alert  {
+    background-color: #ffdb9b;
+    padding: 20px 40px;
+    min-width: 220px;
+    position: absolute;
+    right: 0px;
+    top: 40%;
+    overflow: hidden;
+    border-radius: 4px;
+    border-left: 8px solid #ffa502;
+    z-index: 5;
+}
+
+@keyframes show_slide {
+    0%{
+        transform: translateX(100%);
+    }
+    40%{
+        transform: translateX(-10%);
+    }
+    80%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(-10px);
+    }
+}
+
+.alert.show {
+    animation: show_slide 1s ease forwards;
+}
+
+.alert.hide {
+    display: none;
+}
+
+.alert .fa-exclamation-circle {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ce8500;
+    font-size: 30px;
+}
+
+.alert .msg {
+    padding-right: 80px;
+    font-size: 18px;
+    color: #ce8500;
+    text-align: right;
+    margin-left: 50px;
+}
+
+.alert .close-btn{
+    position: absolute;
+    right: 0px;
+    transform: translate(-50%);
+    background: #ffd080;
+    padding:  5px 18px;
+    cursor: pointer;
+}
+.close-btn:hover{
+    background: #ffc766;
+}
+
+.close-btn .fa-times {
+    color: #ce8500;
+    font-size: 22px;
+    line-height: 40px;
+}
+
+
+
+
+
