@@ -1,6 +1,11 @@
 import {VALID_GUESSES_5} from './fiveletterwords.js'
 import {VALID_GUESSES_4} from './fourletterwords.js'
 
+mixpanel.track('Sign Up', {
+  'source': "Pat's affiliate site",
+  'Opted out of email': true,
+});
+
 function getRandomNumber(min, max) {
     let range = max - min + 1;
     let number = Math.random() * range;
