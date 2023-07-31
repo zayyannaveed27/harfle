@@ -6,7 +6,7 @@ Play the popular word-guessing game now in Urdu!
 
 <img src="sample-images/harfle.png" width="900">
 
-###### Check out a live demo [here](https://zayyannaveed27.github.io/harfle).
+### Check out a live demo [here](https://zayyannaveed27.github.io/harfle).
 
 
 ## Features
